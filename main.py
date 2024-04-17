@@ -24,7 +24,7 @@ def find_collection_info(scene_coll):
     return coll_list
 
 
-def get_parent_collections_of_mesh(coll_list):
+def get_parent_collections_of_mesh(coll_list: dict):
     meshes_for_tags = {}
     for collection, values in coll_list.items():
         parents = values.get("parents", [])
