@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:2bdf2246ab804df2fd488c5ef8fd06fc419c1cb63f62db4ae3a9f5811c6c4325"
+content_hash = "sha256:796fde77b879f03848a2bace7618dae1b61969d826c25012bb05f5b3263c44ed"
 
 [[package]]
 name = "bpy"
@@ -105,6 +105,17 @@ files = [
     {file = "Cython-3.0.9-cp310-cp310-win_amd64.whl", hash = "sha256:56f3b643dbe14449248bbeb9a63fe3878a24256664bc8c8ef6efd45d102596d8"},
     {file = "Cython-3.0.9-py2.py3-none-any.whl", hash = "sha256:bf96417714353c5454c2e3238fca9338599330cf51625cdc1ca698684465646f"},
     {file = "Cython-3.0.9.tar.gz", hash = "sha256:a2d354f059d1f055d34cfaa62c5b68bc78ac2ceab6407148d47fb508cf3ba4f3"},
+]
+
+[[package]]
+name = "fake-bpy-module"
+version = "20240417"
+requires_python = ">=3.8"
+summary = "Collection of the fake Blender Python API module for the code completion."
+groups = ["default"]
+files = [
+    {file = "fake_bpy_module-20240417-py3-none-any.whl", hash = "sha256:c564eadf46ba2707b0818eba8c622d865eec7f20745505e450c0fca449974f5c"},
+    {file = "fake_bpy_module-20240417.tar.gz", hash = "sha256:12e692ba731cdadb0605bc51132f93b8fb3aa9246e09f21a14e86fa11e3a4021"},
 ]
 
 [[package]]
