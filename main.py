@@ -24,17 +24,20 @@ def find_collection_info(scene_coll):
     return coll_list
 
 
-def get_parent_collections_of_mesh(coll_list: dict):
+def get_parent_collections_of_mesh(coll_list: dict, as_path: bool = False):
     meshes_for_tags = {}
     for collection, values in coll_list.items():
         parents = values.get("parents", [])
         parents.append(collection)
         for mesh in values.get("inner_meshes", []):
-            meshes_for_tags[mesh] = parents
+            if as_path:
+                meshes_for_tags[mesh] = "/".join(parents)
+            else:
+                meshes_for_tags[mesh] = parents
     return meshes_for_tags
 
 
-if __name__ == "__main__":
+def main():
     bpy.ops.wm.open_mainfile(filepath=sys.argv[1])
     scene_coll = bpy.context.scene.collection
 
@@ -43,7 +46,11 @@ if __name__ == "__main__":
     with open("blender_collections.json", "w", encoding="utf-8") as outfile:
         json.dump(coll_list, outfile)
 
-    meshes_for_tags = get_parent_collections_of_mesh(coll_list)
+    meshes_for_tags = get_parent_collections_of_mesh(coll_list, True)
 
     with open("meshes_for_tags.json", "w", encoding="utf-8") as outfile:
         json.dump(meshes_for_tags, outfile)
+
+
+if __name__ == "__main__":
+    main()
