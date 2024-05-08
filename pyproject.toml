@@ -1,18 +1,43 @@
+# PDM-specific configuration
+
 [project]
-name = "Read-blender"
+name = "prepare-blender"
 version = "0.1.0"
 description = "Default template for PDM package"
-authors = [
-    {name = "Zefanja Jobse", email = "zefanjaj@gmail.com"},
-]
+authors = [{ name = "Zefanja Jobse", email = "zefanjaj@gmail.com" }]
 dependencies = [
-    "bpy>=4.0.0",
-    "fake-bpy-module>=20240417",
+    "bpy>=4.1.0",                # python blender library
+    "fake-bpy-module>=20240417", # type definitions for the blender python library
 ]
-requires-python = "==3.10.*"
+requires-python = ">=3.11,<3.12.dev0"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
+[tool.pdm.scripts]
+blender-prepare = "python3 anatomy_blender_auto_prepare/main.py"
 
-[tool.pdm]
-distribution = false
+# Poetry-specific configuration
+
+[tool.poetry]
+name = "anatomy-blender-auto-prepare"
+version = "0.1.0"
+description = ""
+authors = ["Zefanja Jobse <zefanjaj@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/zefanjajobse/Anatomy-blender-auto-prepare"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12.dev0"
+bpy = [
+    # { platform = "darwin", markers = "platform_machine == 'x86_64'", file = "whl_files/bpy-4.1.0-cp311-cp311-macosx_14_4_arm64.whl" }, # mac os support fix
+    { version = "^4.1.0" },
+] # python blender library
+fake-bpy-module = "^20240418" # type definitions for the blender python library
+
+[tool.poetry.scripts]
+blender-prepare = "anatomy_blender_auto_prepare.main:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -164,3 +164,4 @@ cython_debug/
 blender_collections.json
 meshes_for_tags.json
 .DS_Store
+whl_files/bpy-4.1.0-cp311-cp311-macosx_14_4_arm64.whl

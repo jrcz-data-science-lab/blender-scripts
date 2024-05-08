@@ -5,14 +5,14 @@ import sys
 import bpy
 
 
-def traverse_tree(current, *parent_obj):
+def traverse_tree(current: bpy.types.Collection, *parent_obj):
     """Get object and the parent of the object"""
     yield current, parent_obj
     for child in current.children:
         yield from traverse_tree(child, *parent_obj, current.name)
 
 
-def find_collection_info(scene_coll):
+def find_collection_info(scene_coll: bpy.types.Collection) -> dict:
     coll_list = {}
     for c, parents in traverse_tree(scene_coll):
         coll_list[c.name] = {
@@ -24,7 +24,7 @@ def find_collection_info(scene_coll):
     return coll_list
 
 
-def get_parent_collections_of_mesh(coll_list: dict, as_path: bool = False):
+def get_parent_collections_of_mesh(coll_list: dict, as_path: bool = False) -> dict:
     meshes_for_tags = {}
     for collection, values in coll_list.items():
         parents = values.get("parents", [])
