@@ -163,3 +163,4 @@ cython_debug/
 
 blender_collections.json
 meshes_for_tags.json
+.DS_Store
