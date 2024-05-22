@@ -32,6 +32,16 @@ Packages within this project are managed via [Poetry](https://python-poetry.org)
 Install the needed packages with `pdm install` or `poetry install`.
 After that you can run the project with `pdm run main.py "path/to/blender/file.blend"` or `poetry run python3 main.py "path/to/blender/file.blend"`.
 
+## Running via Docker
+
+You can also run the tool via Docker instead:
+
+```sh
+docker build --tag read-blender . # build the Docker container and naming it read-blender
+docker run --rm -it --mount type=bind,source="${PWD}",target=/app read-blender bash # running a interactive shell with the necessary dependencies
+python3 main.py "path/to/blender/file.blend" # run the tool
+```
+
 ### Mac OS M1 fix:
 
 The bpy package was build Mac OS 11.2 and newer, for some reason python doesn't detect Mac OS 14.4 as a newer platform for macosx arm.
