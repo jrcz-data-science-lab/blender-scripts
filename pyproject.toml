@@ -16,6 +16,9 @@ license = { text = "MIT" }
 [tool.pdm.scripts]
 blender-prepare = "python3 anatomy_blender_auto_prepare/main.py"
 
+[tool.pdm.dev-dependencies]
+dev = ["pytest>=8.2.2"]
+
 # Poetry-specific configuration
 
 [tool.poetry]
@@ -33,10 +36,13 @@ bpy = [
     # { platform = "darwin", markers = "platform_machine == 'x86_64'", file = "whl_files/bpy-4.1.0-cp311-cp311-macosx_14_4_arm64.whl" }, # mac os support fix
     { version = "^4.1.0" },
 ] # python blender library
-fake-bpy-module = "^20240418" # type definitions for the blender python library
+fake-bpy-module = "^20240620" # type definitions for the blender python library
 
 [tool.poetry.scripts]
 blender-prepare = "anatomy_blender_auto_prepare.main:app"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
 
 [build-system]
 requires = ["poetry-core"]
