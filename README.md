@@ -1,4 +1,4 @@
-# Read-blender
+# Read-blender [![Running tests](https://github.com/jrcz-data-science-lab/blender-scripts/actions/workflows/python-app.yml/badge.svg)](https://github.com/jrcz-data-science-lab/blender-scripts/actions/workflows/python-app.yml)
 
 This tool can be used to print blender collection information in JSON format
 
